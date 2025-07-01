@@ -1,26 +1,31 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-console.log("App initialized");
+    console.log("App initialized");
 
-const quote_txtID = document.getElementById("quote-text");
-const quote_authorID = document.getElementById("quote-author");
+    const quote_txtID = document.getElementById("quote-text");
+    const quote_authorID = document.getElementById("quote-author");
 
+    // Debug: Check if elements are found
+    console.log("test: quote_txtID", quote_txtID);
+    console.log("test: quote_authorID", quote_authorID);
 
-// Function to fetch a random quote from ZenQuotes API
-
-async function getQuote() {
+    async function getQuote() {
     try {
-    const res = await fetch("https://zenquotes.io/api/quotes/");
-    const data = await res.json();
-    quote_txtID.innerText = `"${data[0].q}"`;
-    quote_authorID.innerText = `— ${data[0].a}`;
+        const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent("https://zenquotes.io/api/quotes/");
+        const res = await fetch(proxyUrl);
+        const data = await res.json();
+        const quotes = JSON.parse(data.contents);
+        const quotes_num = quotes.length
+        const randomIndex = Math.floor(Math.random() * quotes_num);
+
+        // Debug: Log the fetched quotes and random index
+        quote_txtID.innerText = `"${quotes[randomIndex].q}"`;
+        quote_authorID.innerText = `— ${quotes[randomIndex].a}`;
     } catch (error) {
-    quote_txtID.innerText = "Failed to fetch quote.";
-    quote_authorID.innerText = ":(";
-    console.error(error);
+        quote_txtID.innerText = "Failed to fetch quote.";
+        quote_authorID.innerText = ":(";
+        console.error(error);
     }
 }
 
-getQuote();
+    getQuote();
 });
-
