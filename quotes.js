@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const res = await fetch(proxyUrl);
         const data = await res.json();
         const quotes = JSON.parse(data.contents);
-        const quotes_num = quotes.length
-        const randomIndex = Math.floor(Math.random() * quotes_num);
+        const randomIndex = Math.floor(Math.random() * 50) - 1;
 
         // Debug: Log the fetched quotes and random index
         quote_txtID.innerText = `"${quotes[randomIndex].q}"`;
