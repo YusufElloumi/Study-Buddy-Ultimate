@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Study Buddy</title>
+  <link rel="stylesheet" href="study_bud.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <div id="to_do_app" class="section">
+            <h1>Add Task</h1>
+            <form id="task-form">
+            <input type="text" id="task-input" placeholder="Enter a new task" required />
+            <button type="submit">Add Task</button> 
+            <button type="button" id="clear-tasks">Clear Tasks</button>
+            </form>
+
+            
+            <div id="sort" class="sort-row">
+            <h5>Move Completed to bottom?</h5>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+            </div>
+
+            <h2>To-Do List</h2>
+            <div id="task-list">
+            <ul id="task-items">
+                <!-- Task items will be dynamically added here -->
+            </ul>
+        </div>
+        <script src="to_do.js"></script>
+        </div>
+
+        <div id="pomodoro_app" class="section">
+            <h1>Pomodoro Timer</h1>
+            <div class="mode-buttons">
+            <button id="work-btn" class="active-mode">Work</button>
+            <button id="short-btn">Short Break</button>
+            <button id="long-btn">Long Break</button>
+            </div>
+            <div id="timer-display">25:00</div>
+            <div class="controls">
+            <button id="start-btn">Start</button>
+            <button id="pause-btn">Pause</button>
+            <button id="reset-btn">Reset</button>
+            </div>
+            <h3>Work Sessions Completed: <span id="session-count">0</span></h3>
+            <script src="pomo.js"></script>
+        </div>
+        
+    </div>
+  <script src="main.js"></script>
+</body>
+</html>
